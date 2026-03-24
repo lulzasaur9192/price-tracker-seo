@@ -1,4 +1,4 @@
-const RAPIDAPI_URL = 'https://rapidapi.com/user/YOUR_RAPIDAPI_USERNAME';
+const RAPIDAPI_URL = 'https://rapidapi.com/user/lulzasaur9192';
 
 interface ApiCTAProps {
   itemName: string;

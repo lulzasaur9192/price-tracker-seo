@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { MUSIC_CATEGORIES, getMusicGearByCategory } from '@/data/seed-items';
+import { MUSIC_CATEGORIES, loadMusicGear, getMusicGearByCategory } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
 import ApiCTA from '@/components/ApiCTA';
 
@@ -20,9 +20,10 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function CategoryPage({ params }: Props) {
+export default async function CategoryPage({ params }: Props) {
   const cat = MUSIC_CATEGORIES.find((c) => c.slug === params.category);
-  const items = getMusicGearByCategory(params.category);
+  const allItems = await loadMusicGear();
+  const items = getMusicGearByCategory(params.category, allItems);
 
   if (!cat) {
     return <p>Category not found.</p>;

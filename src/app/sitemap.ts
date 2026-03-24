@@ -1,14 +1,19 @@
 import { MetadataRoute } from 'next';
 import {
   MUSIC_CATEGORIES,
-  MUSIC_GEAR_ITEMS,
   TCG_GAMES,
-  TRADING_CARDS,
-} from '@/data/seed-items';
+  loadMusicGear,
+  loadTradingCards,
+} from '@/data/items';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pricetrackr.com';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [musicItems, tradingCards] = await Promise.all([
+    loadMusicGear(),
+    loadTradingCards(),
+  ]);
+
   const now = new Date().toISOString();
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -24,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const gearPages: MetadataRoute.Sitemap = MUSIC_GEAR_ITEMS.map((item) => ({
+  const gearPages: MetadataRoute.Sitemap = musicItems.map((item) => ({
     url: `${BASE_URL}/music-gear/${item.categorySlug}/${item.slug}`,
     lastModified: now,
     changeFrequency: 'daily' as const,
@@ -38,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const cardPages: MetadataRoute.Sitemap = TRADING_CARDS.map((card) => ({
+  const cardPages: MetadataRoute.Sitemap = tradingCards.map((card) => ({
     url: `${BASE_URL}/trading-cards/${card.gameSlug}/${card.slug}`,
     lastModified: now,
     changeFrequency: 'daily' as const,

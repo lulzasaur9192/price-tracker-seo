@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { TCG_GAMES, getTradingCardsByGame } from '@/data/seed-items';
+import { TCG_GAMES, loadTradingCards, getTradingCardsByGame } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
 
 export const metadata: Metadata = {
@@ -8,7 +8,9 @@ export const metadata: Metadata = {
     'Track trading card prices for Pokemon, Magic: The Gathering, and Yu-Gi-Oh. Real market data from TCGPlayer.',
 };
 
-export default function TradingCardsPage() {
+export default async function TradingCardsPage() {
+  const allCards = await loadTradingCards();
+
   return (
     <>
       <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -20,7 +22,7 @@ export default function TradingCardsPage() {
       </p>
 
       {TCG_GAMES.map((game) => {
-        const cards = getTradingCardsByGame(game.slug).slice(0, 4);
+        const cards = getTradingCardsByGame(game.slug, allCards).slice(0, 4);
         return (
           <section key={game.slug} className="mb-12">
             <div className="flex items-center justify-between mb-4">

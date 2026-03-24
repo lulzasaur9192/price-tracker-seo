@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { TCG_GAMES, getTradingCardsByGame } from '@/data/seed-items';
+import { TCG_GAMES, loadTradingCards, getTradingCardsByGame } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
 import ApiCTA from '@/components/ApiCTA';
 
@@ -20,9 +20,10 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function GamePage({ params }: Props) {
+export default async function GamePage({ params }: Props) {
   const game = TCG_GAMES.find((g) => g.slug === params.game);
-  const cards = getTradingCardsByGame(params.game);
+  const allCards = await loadTradingCards();
+  const cards = getTradingCardsByGame(params.game, allCards);
 
   if (!game) {
     return <p>Game not found.</p>;

@@ -1,20 +1,22 @@
 import type { Metadata } from 'next';
-import { TCG_GAMES, TRADING_CARDS, getTradingCard } from '@/data/seed-items';
+import { TCG_GAMES, loadTradingCards, getTradingCard } from '@/data/items';
 import ApiCTA from '@/components/ApiCTA';
 
 interface Props {
   params: { game: string; card: string };
 }
 
-export function generateStaticParams() {
-  return TRADING_CARDS.map((card) => ({
+export async function generateStaticParams() {
+  const cards = await loadTradingCards();
+  return cards.map((card) => ({
     game: card.gameSlug,
     card: card.slug,
   }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const card = getTradingCard(params.game, params.card);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const cards = await loadTradingCards();
+  const card = getTradingCard(params.game, params.card, cards);
   if (!card) return {};
   return {
     title: `${card.name} Price — ${card.game} ${card.set} Market Value`,
@@ -32,8 +34,9 @@ function formatPrice(price: number): string {
     : `$${price.toFixed(price < 1 ? 2 : 0)}`;
 }
 
-export default function CardPage({ params }: Props) {
-  const card = getTradingCard(params.game, params.card);
+export default async function CardPage({ params }: Props) {
+  const cards = await loadTradingCards();
+  const card = getTradingCard(params.game, params.card, cards);
   const game = TCG_GAMES.find((g) => g.slug === params.game);
 
   if (!card || !game) {

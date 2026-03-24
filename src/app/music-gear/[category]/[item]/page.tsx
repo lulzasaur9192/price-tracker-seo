@@ -1,24 +1,26 @@
 import type { Metadata } from 'next';
 import {
   MUSIC_CATEGORIES,
-  MUSIC_GEAR_ITEMS,
+  loadMusicGear,
   getMusicGearItem,
-} from '@/data/seed-items';
+} from '@/data/items';
 import ApiCTA from '@/components/ApiCTA';
 
 interface Props {
   params: { category: string; item: string };
 }
 
-export function generateStaticParams() {
-  return MUSIC_GEAR_ITEMS.map((item) => ({
+export async function generateStaticParams() {
+  const items = await loadMusicGear();
+  return items.map((item) => ({
     category: item.categorySlug,
     item: item.slug,
   }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const item = getMusicGearItem(params.category, params.item);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const items = await loadMusicGear();
+  const item = getMusicGearItem(params.category, params.item, items);
   if (!item) return {};
   return {
     title: `${item.name} Price Guide — Used ${item.name} Market Value`,
@@ -36,8 +38,9 @@ function formatPrice(price: number): string {
     : `$${price.toFixed(0)}`;
 }
 
-export default function ItemPage({ params }: Props) {
-  const item = getMusicGearItem(params.category, params.item);
+export default async function ItemPage({ params }: Props) {
+  const items = await loadMusicGear();
+  const item = getMusicGearItem(params.category, params.item, items);
   const cat = MUSIC_CATEGORIES.find((c) => c.slug === params.category);
 
   if (!item || !cat) {

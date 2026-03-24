@@ -1,9 +1,10 @@
-import { MUSIC_GEAR_ITEMS, TRADING_CARDS } from '@/data/seed-items';
+import { loadMusicGear, loadTradingCards } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
 
-export default function HomePage() {
-  const featuredGear = MUSIC_GEAR_ITEMS.slice(0, 4);
-  const featuredCards = TRADING_CARDS.slice(0, 4);
+export default async function HomePage() {
+  const [allGear, allCards] = await Promise.all([loadMusicGear(), loadTradingCards()]);
+  const featuredGear = allGear.slice(0, 4);
+  const featuredCards = allCards.slice(0, 4);
 
   return (
     <>
@@ -97,7 +98,7 @@ export default function HomePage() {
           requests/month.
         </p>
         <a
-          href="https://rapidapi.com/user/YOUR_RAPIDAPI_USERNAME"
+          href="https://rapidapi.com/user/lulzasaur9192"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-blue-600 text-white font-medium px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors"

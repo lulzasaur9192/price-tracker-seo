@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { MUSIC_CATEGORIES, getMusicGearByCategory } from '@/data/seed-items';
+import { MUSIC_CATEGORIES, loadMusicGear, getMusicGearByCategory } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
 
 export const metadata: Metadata = {
@@ -8,7 +8,9 @@ export const metadata: Metadata = {
     'Track used prices for guitars, amplifiers, effects pedals, synthesizers, and recording gear. Real market data from Reverb.',
 };
 
-export default function MusicGearPage() {
+export default async function MusicGearPage() {
+  const allItems = await loadMusicGear();
+
   return (
     <>
       <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -21,7 +23,7 @@ export default function MusicGearPage() {
       </p>
 
       {MUSIC_CATEGORIES.map((cat) => {
-        const items = getMusicGearByCategory(cat.slug).slice(0, 4);
+        const items = getMusicGearByCategory(cat.slug, allItems).slice(0, 4);
         return (
           <section key={cat.slug} className="mb-12">
             <div className="flex items-center justify-between mb-4">
