@@ -22,6 +22,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/trading-cards`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
   ];
 
+  const apiLandingPages: MetadataRoute.Sitemap = [
+    'tcgplayer-price-data',
+    'psa-card-population-report',
+    'nurse-license-verification',
+  ].map((slug) => ({
+    url: `${BASE_URL}/apis/${slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
   const categoryPages: MetadataRoute.Sitemap = MUSIC_CATEGORIES.map((cat) => ({
     url: `${BASE_URL}/music-gear/${cat.slug}`,
     lastModified: now,
@@ -50,5 +61,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...categoryPages, ...gearPages, ...gamePages, ...cardPages];
+  return [...staticPages, ...apiLandingPages, ...categoryPages, ...gearPages, ...gamePages, ...cardPages];
 }

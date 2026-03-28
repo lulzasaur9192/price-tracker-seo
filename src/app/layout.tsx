@@ -51,6 +51,9 @@ export default function RootLayout({
               <a href="/trading-cards" className="hover:text-gray-900">
                 Trading Cards
               </a>
+              <a href="/apis/tcgplayer-price-data" className="hover:text-gray-900">
+                APIs
+              </a>
             </div>
           </div>
         </nav>
