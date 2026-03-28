@@ -98,7 +98,7 @@ export default async function HomePage() {
           requests/month.
         </p>
         <a
-          href="https://rapidapi.com/user/lulzasaur9192"
+          href="https://rapidapi.com/user/lulzasaur9192?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=homepage-cta"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-blue-600 text-white font-medium px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors"

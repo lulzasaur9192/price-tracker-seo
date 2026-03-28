@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/tcgplayer-price-data';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/tcgplayer-price-data?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=tcg-api-page';
 
 const curlExample = `curl -X GET "https://tcgplayer-price-data.p.rapidapi.com/cards/search?query=charizard&game=pokemon" \\
   -H "X-RapidAPI-Key: YOUR_API_KEY" \\
@@ -197,6 +197,31 @@ export default function TCGPlayerPriceDataPage() {
               <h3 className="font-semibold text-gray-900 mb-1">{uc.title}</h3>
               <p className="text-gray-600 text-sm">{uc.desc}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Use Case Deep Dives */}
+      <section className="mb-16 bg-gray-50 rounded-lg p-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          Explore Use Cases
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            { title: 'Collection Valuator', desc: 'Calculate what your binder is worth with real-time prices.', href: '/apis/tcgplayer-price-data/collectors' },
+            { title: 'Card Arbitrage', desc: 'Find underpriced cards and cross-platform margins.', href: '/apis/tcgplayer-price-data/resellers' },
+            { title: 'Store Inventory Pricing', desc: 'Auto-price your card shop singles against market data.', href: '/apis/tcgplayer-price-data/store-inventory' },
+            { title: 'Discord Price Bot', desc: 'Add /price commands to your Discord server.', href: '/apis/tcgplayer-price-data/discord-bots' },
+            { title: 'Price Drop Alerts', desc: 'Get notified when cards hit your target price.', href: '/apis/tcgplayer-price-data/price-alerts' },
+          ].map((uc) => (
+            <a
+              key={uc.title}
+              href={uc.href}
+              className="border border-gray-200 rounded-lg p-5 bg-white hover:border-blue-300 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-blue-600 mb-1">{uc.title}</h3>
+              <p className="text-gray-600 text-sm">{uc.desc}</p>
+            </a>
           ))}
         </div>
       </section>

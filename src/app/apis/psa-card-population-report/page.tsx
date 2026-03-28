@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/psa-card-population-report';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/psa-card-population-report?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=psa-api-page';
 
 const curlExample = `curl -X GET "https://psa-card-population-report.p.rapidapi.com/population?set=base-set&game=pokemon" \\
   -H "X-RapidAPI-Key: YOUR_API_KEY" \\
