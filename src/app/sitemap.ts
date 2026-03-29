@@ -26,11 +26,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'tcgplayer-price-data',
     'psa-card-population-report',
     'nurse-license-verification',
+    'sec-edgar-insider-trading',
+    'agent-audit-log',
   ].map((slug) => ({
     url: `${BASE_URL}/apis/${slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
+  }));
+
+  // Intent-specific subpages for each API
+  const apiSubpages: MetadataRoute.Sitemap = [
+    // TCGPlayer
+    'tcgplayer-price-data/collectors',
+    'tcgplayer-price-data/resellers',
+    'tcgplayer-price-data/price-alerts',
+    'tcgplayer-price-data/store-inventory',
+    'tcgplayer-price-data/discord-bots',
+    // Nurse License Verification
+    'nurse-license-verification/staffing-agencies',
+    'nurse-license-verification/hospitals',
+    'nurse-license-verification/credentialing',
+    'nurse-license-verification/telemedicine',
+    // SEC EDGAR Insider Trading
+    'sec-edgar-insider-trading/quant-trading',
+    'sec-edgar-insider-trading/compliance',
+    'sec-edgar-insider-trading/research',
+    'sec-edgar-insider-trading/alerts',
+    // Agent Audit Log
+    'agent-audit-log/enterprise-compliance',
+    'agent-audit-log/ai-safety',
+    'agent-audit-log/developers',
+  ].map((path) => ({
+    url: `${BASE_URL}/apis/${path}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
   }));
 
   const categoryPages: MetadataRoute.Sitemap = MUSIC_CATEGORIES.map((cat) => ({
@@ -61,5 +92,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...apiLandingPages, ...categoryPages, ...gearPages, ...gamePages, ...cardPages];
+  return [...staticPages, ...apiLandingPages, ...apiSubpages, ...categoryPages, ...gearPages, ...gamePages, ...cardPages];
 }
