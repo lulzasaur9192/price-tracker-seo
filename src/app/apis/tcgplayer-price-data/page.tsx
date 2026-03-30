@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import GadsConversion from '@/components/GadsConversion';
 
 export const metadata: Metadata = {
   title: 'TCGPlayer Price Data API — Real-Time Pokemon, MTG & Yu-Gi-Oh Card Prices',
@@ -62,7 +63,7 @@ data.results.forEach((card) => {
 export default function TCGPlayerPriceDataPage() {
   return (
     <>
-      {/* GOOGLE_ADS_CONVERSION_TAG_PLACEHOLDER */}
+      <GadsConversion />
 
       {/* Hero */}
       <section className="text-center py-16 border-b border-gray-100 mb-12">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import GadsConversion from '@/components/GadsConversion';
 
 export const metadata: Metadata = {
   title: 'Nurse License Verification API — Real-Time License Lookup for All 50 States',
@@ -75,7 +76,7 @@ data.results.forEach((r) => {
 export default function NurseLicenseVerificationPage() {
   return (
     <>
-      {/* GOOGLE_ADS_CONVERSION_TAG_PLACEHOLDER */}
+      <GadsConversion />
 
       {/* Hero */}
       <section className="text-center py-16 border-b border-gray-100 mb-12">

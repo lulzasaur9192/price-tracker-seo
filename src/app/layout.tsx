@@ -23,20 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics — replace GA_MEASUREMENT_ID */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');`,
-              }}
-            />
-          </>
-        )}
+        {/* Google Ads + Analytics gtag */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18042306771"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18042306771');${process.env.NEXT_PUBLIC_GA_ID ? `gtag('config','${process.env.NEXT_PUBLIC_GA_ID}');` : ''}`,
+          }}
+        />
       </head>
       <body className="min-h-screen">
         <nav className="border-b border-gray-200 bg-white">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import GadsConversion from '@/components/GadsConversion';
 
 export const metadata: Metadata = {
   title: 'Agent Audit Log API — Tamper-Proof HMAC Audit Trails for AI Agents',
@@ -95,7 +96,7 @@ console.log(\`Chain integrity: \${result.valid ? "VALID" : "BROKEN"}\`);`;
 export default function AgentAuditLogPage() {
   return (
     <>
-      {/* GOOGLE_ADS_CONVERSION_TAG_PLACEHOLDER */}
+      <GadsConversion />
 
       {/* Hero */}
       <section className="text-center py-16 border-b border-gray-100 mb-12">
