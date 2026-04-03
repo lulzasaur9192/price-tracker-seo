@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/nurse-license-verification?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=staffing-agencies';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/nurse-license-verification1?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=staffing-agencies';
 
 const pythonExample = `import requests
 import csv

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/agent-audit-log?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=audit-developers';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/ai-agent-compliance-logger-api?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=audit-developers';
 
 const pythonExample = `import requests
 import time

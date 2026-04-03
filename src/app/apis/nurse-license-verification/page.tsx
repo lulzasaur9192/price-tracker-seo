@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/nurse-license-verification?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=nurse-api-page';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/nurse-license-verification1?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=nurse-api-page';
 
 const curlExample = `curl -X GET "https://nurse-license-verification.p.rapidapi.com/verify?name=Jane+Smith&state=FL&profession=RN" \\
   -H "X-RapidAPI-Key: YOUR_API_KEY" \\

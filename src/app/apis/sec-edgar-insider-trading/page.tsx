@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/sec-insider-trades?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=sec-insider-api-page';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/sec-insider-trading-api?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=sec-insider-api-page';
 
 const curlExample = `curl -X GET "https://sec-insider-trades.p.rapidapi.com/trades/recent?days=7&limit=20" \\
   -H "X-RapidAPI-Key: YOUR_API_KEY" \\

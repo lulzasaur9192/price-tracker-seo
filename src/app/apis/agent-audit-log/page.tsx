@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/agent-audit-log?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=audit-api-page';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/ai-agent-compliance-logger-api?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=audit-api-page';
 
 const curlExample = `curl -X POST "https://agent-audit-log.p.rapidapi.com/audit/log" \\
   -H "X-RapidAPI-Key: YOUR_API_KEY" \\

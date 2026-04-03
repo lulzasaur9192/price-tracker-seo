@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/sec-insider-trades?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=sec-alerts';
+const RAPIDAPI_URL = 'https://rapidapi.com/lulzasaur9192/api/sec-insider-trading-api?utm_source=pricetrackr&utm_medium=seo-site&utm_campaign=sec-alerts';
 
 const pythonExample = `import requests
 import json
