@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import AnalyticsBeacon from '../components/AnalyticsBeacon';
 
 export const metadata: Metadata = {
   title: {
@@ -53,6 +54,7 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
+        <AnalyticsBeacon />
         <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
         <footer className="border-t border-gray-200 mt-16">
           <div className="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-500">
