@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'PriceTrackr',
   },
+  verification: {
+    google: 'jLx_ERlWW1BLJkWOExa9YVU_pXfOekoCdGMBcJbL4uA',
+  },
 };
 
 export default function RootLayout({
