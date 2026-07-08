@@ -1,5 +1,11 @@
+import type { Metadata } from 'next';
 import { loadMusicGear, loadTradingCards } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
+import { canonicalUrl } from '@/lib/site';
+
+export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/') },
+};
 
 export default async function HomePage() {
   const [allGear, allCards] = await Promise.all([loadMusicGear(), loadTradingCards()]);
@@ -13,8 +19,8 @@ export default async function HomePage() {
           Free Price Tracker for Music Gear & Trading Cards
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-          Track used prices from Reverb and TCGPlayer. See market trends, price
-          history, and fair market values for guitars, synths, Pokemon cards,
+          Track used prices from Reverb and TCGPlayer. See current market
+          prices and fair market values for guitars, synths, Pokemon cards,
           MTG, and more.
         </p>
         <div className="flex justify-center gap-4">
@@ -53,7 +59,6 @@ export default async function HomePage() {
               avgPrice={item.avgPrice}
               lowPrice={item.lowPrice}
               highPrice={item.highPrice}
-              priceHistory={item.priceHistory}
               href={`/music-gear/${item.categorySlug}/${item.slug}`}
               subtitle={item.brand}
             />
@@ -81,7 +86,6 @@ export default async function HomePage() {
               avgPrice={card.avgPrice}
               lowPrice={card.lowPrice}
               highPrice={card.highPrice}
-              priceHistory={card.priceHistory}
               href={`/trading-cards/${card.gameSlug}/${card.slug}`}
               subtitle={`${card.game} — ${card.set}`}
             />

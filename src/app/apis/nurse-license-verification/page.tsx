@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
 import GadsConversion from '@/components/GadsConversion';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/nurse-license-verification') },
   title: 'Nurse License Verification API — Real-Time License Lookup for All 50 States',
   description:
     'Verify nursing licenses across all 50 states via API. Real-time lookup for RN, LPN, NP, and APRN licenses. Built for staffing agencies, credentialing platforms, and healthcare compliance.',

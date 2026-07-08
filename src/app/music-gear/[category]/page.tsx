@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { MUSIC_CATEGORIES, loadMusicGear, getMusicGearByCategory } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
 import ApiCTA from '@/components/ApiCTA';
+import { canonicalUrl } from '@/lib/site';
 
 interface Props {
   params: { category: string };
@@ -17,6 +18,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `${cat.name} Prices — Used ${cat.name} Price Guide`,
     description: cat.description,
+    alternates: { canonical: canonicalUrl(`/music-gear/${cat.slug}`) },
   };
 }
 
@@ -51,7 +53,6 @@ export default async function CategoryPage({ params }: Props) {
             avgPrice={item.avgPrice}
             lowPrice={item.lowPrice}
             highPrice={item.highPrice}
-            priceHistory={item.priceHistory}
             href={`/music-gear/${params.category}/${item.slug}`}
             subtitle={item.brand}
           />

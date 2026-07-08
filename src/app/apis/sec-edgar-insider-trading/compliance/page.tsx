@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/sec-edgar-insider-trading/compliance') },
   title: 'Monitor Executive Trades for Compliance Reporting — SEC EDGAR API',
   description:
     'Build compliance monitoring tools with SEC Form 4 insider trading data. Track executive transactions, detect blackout period violations, and generate audit-ready reports via REST API.',

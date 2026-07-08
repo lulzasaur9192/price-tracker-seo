@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import AnalyticsBeacon from '../components/AnalyticsBeacon';
+import { SITE_URL } from '../lib/site';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`${SITE_URL}/`),
   title: {
     default: 'PriceTrackr — Free Price Tracker for Music Gear & Trading Cards',
     template: '%s | PriceTrackr',

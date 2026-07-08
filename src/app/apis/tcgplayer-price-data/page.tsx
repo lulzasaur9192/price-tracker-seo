@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
 import GadsConversion from '@/components/GadsConversion';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/tcgplayer-price-data') },
   title: 'TCGPlayer Price Data API — Real-Time Pokemon, MTG & Yu-Gi-Oh Card Prices',
   description:
     'Access real-time trading card prices from TCGPlayer via API. Get market prices, lowest listings, and card details for Pokemon, Magic: The Gathering, Yu-Gi-Oh, and Lorcana. Free tier available.',

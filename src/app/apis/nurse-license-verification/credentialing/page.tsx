@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/nurse-license-verification/credentialing') },
   title: 'Integrate License Verification into Your Credentialing Platform — Healthcare License Verification API',
   description:
     'Add real-time nurse license verification to your credentialing software. API-first integration for primary source verification across all 50 states. Supports RN, LPN, NP, APRN, and 18 more professions.',

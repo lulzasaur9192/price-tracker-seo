@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/sec-edgar-insider-trading/research') },
   title: 'Analyze Insider Trading Patterns for Investment Research — SEC EDGAR API',
   description:
     'Research insider trading patterns with SEC Form 4 data. Identify cluster buys, track CEO purchases, analyze sector-level insider sentiment, and surface high-conviction trades via REST API.',

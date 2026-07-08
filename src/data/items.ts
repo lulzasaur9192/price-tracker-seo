@@ -1,4 +1,4 @@
-import { MusicGearItem, TradingCard, PricePoint } from '@/lib/types';
+import { MusicGearItem, TradingCard } from '@/lib/types';
 import { fetchReverbListings, fetchTCGPlayerListings } from '@/lib/apify';
 import {
   MUSIC_GEAR_ITEMS as SEED_MUSIC,
@@ -57,16 +57,6 @@ function slugify(name: string): string {
     .slice(0, 80);
 }
 
-function buildPriceHistory(basePrice: number, source: string): PricePoint[] {
-  const months = ['2025-10', '2025-11', '2025-12', '2026-01', '2026-02', '2026-03'];
-  return months.map((date, i) => ({
-    date,
-    price: Math.round(basePrice * (0.9 + Math.random() * 0.2)),
-    condition: ['Excellent', 'Good', 'Very Good'][i % 3],
-    source,
-  }));
-}
-
 function mapReverbToMusicGear(items: Record<string, unknown>[]): MusicGearItem[] {
   // Group by title (dedupe) and take items with valid data
   const seen = new Set<string>();
@@ -97,7 +87,6 @@ function mapReverbToMusicGear(items: Record<string, unknown>[]): MusicGearItem[]
       avgPrice: price,
       lowPrice: Math.round(price * 0.65),
       highPrice: Math.round(price * 1.5),
-      priceHistory: buildPriceHistory(price, 'Reverb'),
       description: `${title} — ${condition} condition. Current market price $${price.toLocaleString()} on Reverb. Track used ${make || ''} prices and market trends.`,
       imageAlt: title,
     });
@@ -153,7 +142,6 @@ function mapTCGToCards(items: Record<string, unknown>[]): TradingCard[] {
       avgPrice: marketPrice,
       lowPrice: lowestPrice || Math.round(marketPrice * 0.6),
       highPrice: Math.round(marketPrice * 1.8),
-      priceHistory: buildPriceHistory(marketPrice, 'TCGPlayer'),
       description: `${name} (${setName}, ${rarity}) — market price $${marketPrice.toFixed(2)} on TCGPlayer. Track ${productLine} card values and price trends.`,
       imageAlt: `${name} ${productLine} card`,
     });

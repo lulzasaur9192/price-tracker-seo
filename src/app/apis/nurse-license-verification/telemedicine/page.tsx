@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/nurse-license-verification/telemedicine') },
   title: 'Cross-State License Verification for Telemedicine Platforms — Healthcare License Verification API',
   description:
     'Verify nurse and provider licenses across state lines for telemedicine. Automate multi-state credential checks for telehealth platforms. Ensure providers are licensed in the patient state before every session.',

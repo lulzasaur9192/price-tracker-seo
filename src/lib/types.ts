@@ -1,10 +1,3 @@
-export interface PricePoint {
-  date: string;
-  price: number;
-  condition: string;
-  source: string;
-}
-
 export interface MusicGearItem {
   slug: string;
   name: string;
@@ -14,7 +7,6 @@ export interface MusicGearItem {
   avgPrice: number;
   lowPrice: number;
   highPrice: number;
-  priceHistory: PricePoint[];
   description: string;
   imageAlt: string;
 }
@@ -29,7 +21,6 @@ export interface TradingCard {
   avgPrice: number;
   lowPrice: number;
   highPrice: number;
-  priceHistory: PricePoint[];
   description: string;
   imageAlt: string;
 }

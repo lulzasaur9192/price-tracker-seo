@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/tcgplayer-price-data/store-inventory') },
   title: 'TCG Store Inventory Pricing Integration — API for Card Shops',
   description:
     'Integrate TCGPlayer market prices into your card shop inventory system. Automatically price your singles based on real-time market data. Built for LGS and online stores.',

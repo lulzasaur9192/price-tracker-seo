@@ -5,8 +5,9 @@ import {
   loadMusicGear,
   loadTradingCards,
 } from '@/data/items';
+import { SITE_URL } from '@/lib/site';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pricetrackr.com';
+const BASE_URL = SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [musicItems, tradingCards] = await Promise.all([

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/agent-audit-log/ai-safety') },
   title: 'Verify AI Agent Actions with Tamper-Proof Logs — Agent Audit Log API',
   description:
     'Monitor AI agent behavior with cryptographically verifiable audit logs. Detect unauthorized actions, verify agent safety constraints, and build trustworthy AI systems with HMAC-SHA256 chains.',

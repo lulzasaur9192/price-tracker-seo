@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/nurse-license-verification/hospitals') },
   title: 'Hospital Staff License Compliance Automation — Healthcare License Verification API',
   description:
     'Automate nursing license compliance for hospitals and health systems. Continuously monitor RN, LPN, and NP license status across your entire staff. Prevent compliance gaps before they happen.',

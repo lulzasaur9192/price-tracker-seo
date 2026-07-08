@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
 import GadsConversion from '@/components/GadsConversion';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/sec-edgar-insider-trading') },
   title: 'SEC EDGAR Insider Trading API — Real-Time Form 4 Filings & Executive Trades',
   description:
     'Access real-time SEC Form 4 insider trading data via API. Track executive buy/sell transactions, corporate insider activity, and filing details for any public company. Free tier available.',

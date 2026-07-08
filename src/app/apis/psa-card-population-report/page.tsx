@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
 import GadsConversion from '@/components/GadsConversion';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/psa-card-population-report') },
   title: 'PSA Card Population Report API — Graded Card Population Data',
   description:
     'Access PSA population report data via API. Get grade breakdowns from Auth through PSA 10 for entire sets or single cards. Bulk population data for Pokemon, MTG, sports cards, and more.',

@@ -11,6 +11,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write # needed by the keepalive step to re-enable this workflow
 
 concurrency:
   group: "pages"
@@ -29,6 +30,16 @@ jobs:
       - run: npm run build
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          NEXT_PUBLIC_SITE_URL: https://lulzasaur9192.github.io/price-tracker-seo
+      # GitHub auto-disables scheduled workflows after 60 days without repo
+      # activity (this killed the daily rebuild once already). Re-enabling the
+      # workflow via the API resets that inactivity timer, so this step keeps
+      # the cron alive indefinitely.
+      - name: Keepalive — prevent 60-day scheduled-workflow auto-disable
+        if: github.event_name == 'schedule'
+        run: gh workflow enable deploy.yml --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

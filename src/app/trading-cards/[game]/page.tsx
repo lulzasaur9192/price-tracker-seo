@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { TCG_GAMES, loadTradingCards, getTradingCardsByGame } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
 import ApiCTA from '@/components/ApiCTA';
+import { canonicalUrl } from '@/lib/site';
 
 interface Props {
   params: { game: string };
@@ -17,6 +18,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `${game.name} Card Prices — ${game.name} Price Guide`,
     description: game.description,
+    alternates: { canonical: canonicalUrl(`/trading-cards/${game.slug}`) },
   };
 }
 
@@ -51,7 +53,6 @@ export default async function GamePage({ params }: Props) {
             avgPrice={card.avgPrice}
             lowPrice={card.lowPrice}
             highPrice={card.highPrice}
-            priceHistory={card.priceHistory}
             href={`/trading-cards/${params.game}/${card.slug}`}
             subtitle={`${card.set} — ${card.rarity}`}
           />

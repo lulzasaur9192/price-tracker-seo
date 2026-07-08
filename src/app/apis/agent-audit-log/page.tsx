@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
 import GadsConversion from '@/components/GadsConversion';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/agent-audit-log') },
   title: 'Agent Audit Log API — Tamper-Proof HMAC Audit Trails for AI Agents',
   description:
     'Log and verify AI agent actions with HMAC-SHA256 chained audit trails. Immutable, append-only logs with cryptographic integrity verification. Built for enterprise compliance and AI safety.',

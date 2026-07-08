@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/agent-audit-log/developers') },
   title: 'Debug and Monitor AI Agent Behavior in Production — Agent Audit Log API',
   description:
     'Add production monitoring to your AI agents. Log tool calls, trace decision chains, and debug agent failures with tamper-proof HMAC audit trails. Built for developers shipping agents to production.',

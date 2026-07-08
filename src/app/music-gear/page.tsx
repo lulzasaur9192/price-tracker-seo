@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { MUSIC_CATEGORIES, loadMusicGear, getMusicGearByCategory } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/music-gear') },
   title: 'Music Gear Prices — Guitars, Amps, Pedals, Synths',
   description:
     'Track used prices for guitars, amplifiers, effects pedals, synthesizers, and recording gear. Real market data from Reverb.',
@@ -46,7 +48,6 @@ export default async function MusicGearPage() {
                   avgPrice={item.avgPrice}
                   lowPrice={item.lowPrice}
                   highPrice={item.highPrice}
-                  priceHistory={item.priceHistory}
                   href={`/music-gear/${cat.slug}/${item.slug}`}
                   subtitle={item.brand}
                 />

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/sec-edgar-insider-trading/quant-trading') },
   title: 'Track Insider Buy/Sell Signals for Quantitative Trading — SEC EDGAR API',
   description:
     'Use SEC Form 4 insider trading data as alpha signals in quantitative trading models. Backtest insider sentiment, cluster buys by sector, and build signal pipelines with a simple REST API.',

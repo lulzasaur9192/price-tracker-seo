@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/tcgplayer-price-data/resellers') },
   title: 'Card Arbitrage & Price Comparison API — TCGPlayer for Resellers',
   description:
     'Find underpriced trading cards and arbitrage opportunities with the TCGPlayer Price API. Compare market prices across Pokemon, MTG, and Yu-Gi-Oh listings.',

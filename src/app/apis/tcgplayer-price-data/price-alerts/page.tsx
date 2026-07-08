@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/tcgplayer-price-data/price-alerts') },
   title: 'Card Price Drop Alerts & Notifications — TCGPlayer API',
   description:
     'Build price drop alerts for trading cards using the TCGPlayer Price API. Get notified when Pokemon, MTG, or Yu-Gi-Oh cards drop below your target price.',

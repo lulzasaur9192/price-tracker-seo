@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { TCG_GAMES, loadTradingCards, getTradingCardsByGame } from '@/data/items';
 import PriceCard from '@/components/PriceCard';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/trading-cards') },
   title: 'Trading Card Prices — Pokemon, MTG, Yu-Gi-Oh',
   description:
     'Track trading card prices for Pokemon, Magic: The Gathering, and Yu-Gi-Oh. Real market data from TCGPlayer.',
@@ -47,7 +49,6 @@ export default async function TradingCardsPage() {
                   avgPrice={card.avgPrice}
                   lowPrice={card.lowPrice}
                   highPrice={card.highPrice}
-                  priceHistory={card.priceHistory}
                   href={`/trading-cards/${game.slug}/${card.slug}`}
                   subtitle={`${card.set} — ${card.rarity}`}
                 />

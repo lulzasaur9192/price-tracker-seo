@@ -5,6 +5,7 @@ import {
   getMusicGearItem,
 } from '@/data/items';
 import ApiCTA from '@/components/ApiCTA';
+import { canonicalUrl } from '@/lib/site';
 
 interface Props {
   params: { category: string; item: string };
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${item.name} Price Guide — Used ${item.name} Market Value`,
     description: `${item.name} used price: avg $${item.avgPrice.toLocaleString()}, low $${item.lowPrice.toLocaleString()}, high $${item.highPrice.toLocaleString()}. ${item.description}`,
+    alternates: { canonical: canonicalUrl(`/music-gear/${item.categorySlug}/${item.slug}`) },
     openGraph: {
       title: `${item.name} Price Guide`,
       description: item.description,
@@ -91,44 +93,6 @@ export default async function ItemPage({ params }: Props) {
 
       <section className="mb-8">
         <h2 className="text-xl font-bold text-gray-900 mb-4">
-          Price History
-        </h2>
-        <div className="border border-gray-200 rounded-lg overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Date
-                </th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Price
-                </th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Condition
-                </th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Source
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {item.priceHistory.map((point, i) => (
-                <tr key={i} className="border-t border-gray-100">
-                  <td className="px-4 py-3">{point.date}</td>
-                  <td className="px-4 py-3 font-medium">
-                    {formatPrice(point.price)}
-                  </td>
-                  <td className="px-4 py-3">{point.condition}</td>
-                  <td className="px-4 py-3 text-gray-500">{point.source}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">
           About the {item.name}
         </h2>
         <div className="prose prose-gray max-w-none">
@@ -140,9 +104,9 @@ export default async function ItemPage({ params }: Props) {
             collector-grade examples.
           </p>
           <p>
-            This {item.category.toLowerCase()} price guide is updated regularly
-            using real transaction data. Use it to determine fair market value
-            before buying or selling your {item.name}.
+            This {item.category.toLowerCase()} price guide reflects the most
+            recent market snapshot from Reverb listings. Use it to determine
+            fair market value before buying or selling your {item.name}.
           </p>
         </div>
       </section>

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/tcgplayer-price-data/collectors') },
   title: 'Calculate Your Card Collection Value — TCGPlayer API for Collectors',
   description:
     'Build a card collection valuator with the TCGPlayer Price API. Get real-time market prices for Pokemon, MTG, and Yu-Gi-Oh cards to calculate total collection value.',

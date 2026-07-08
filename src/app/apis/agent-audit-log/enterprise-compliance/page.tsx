@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/agent-audit-log/enterprise-compliance') },
   title: 'AI Agent Audit Trails for Enterprise Compliance — SOC 2 & ISO 27001 Ready',
   description:
     'Cryptographic audit trails for AI agents that satisfy SOC 2, ISO 27001, and regulatory compliance. HMAC-SHA256 hash chains prove log integrity to auditors. Built for enterprise compliance teams.',

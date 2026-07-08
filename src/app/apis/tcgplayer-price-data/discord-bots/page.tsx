@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import CodeBlock from '@/components/CodeBlock';
+import { canonicalUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/apis/tcgplayer-price-data/discord-bots') },
   title: 'Build a Pokemon Price Bot for Discord — TCGPlayer API Tutorial',
   description:
     'Step-by-step guide to building a Discord bot that looks up trading card prices from TCGPlayer. Get real-time Pokemon, MTG, and Yu-Gi-Oh prices in your server.',

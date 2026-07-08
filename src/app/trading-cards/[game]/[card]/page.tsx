@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { TCG_GAMES, loadTradingCards, getTradingCard } from '@/data/items';
 import ApiCTA from '@/components/ApiCTA';
+import { canonicalUrl } from '@/lib/site';
 
 interface Props {
   params: { game: string; card: string };
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${card.name} Price — ${card.game} ${card.set} Market Value`,
     description: `${card.name} (${card.set}, ${card.rarity}) price: avg $${card.avgPrice.toLocaleString()}, low $${card.lowPrice.toLocaleString()}, high $${card.highPrice.toLocaleString()}. ${card.description}`,
+    alternates: { canonical: canonicalUrl(`/trading-cards/${card.gameSlug}/${card.slug}`) },
     openGraph: {
       title: `${card.name} Price Guide`,
       description: card.description,
@@ -90,44 +92,6 @@ export default async function CardPage({ params }: Props) {
 
       <section className="mb-8">
         <h2 className="text-xl font-bold text-gray-900 mb-4">
-          Price History
-        </h2>
-        <div className="border border-gray-200 rounded-lg overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Date
-                </th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Price
-                </th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Condition
-                </th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">
-                  Source
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {card.priceHistory.map((point, i) => (
-                <tr key={i} className="border-t border-gray-100">
-                  <td className="px-4 py-3">{point.date}</td>
-                  <td className="px-4 py-3 font-medium">
-                    {formatPrice(point.price)}
-                  </td>
-                  <td className="px-4 py-3">{point.condition}</td>
-                  <td className="px-4 py-3 text-gray-500">{point.source}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="mb-8">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">
           About {card.name}
         </h2>
         <div className="prose prose-gray max-w-none">
@@ -139,9 +103,9 @@ export default async function CardPage({ params }: Props) {
             mint or graded examples.
           </p>
           <p>
-            This {card.game} price guide is updated regularly using real
-            transaction data. Use it to determine fair market value before
-            buying or selling.
+            This {card.game} price guide reflects the most recent market
+            snapshot from TCGPlayer listings. Use it to determine fair market
+            value before buying or selling.
           </p>
         </div>
       </section>
