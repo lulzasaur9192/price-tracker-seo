@@ -2,3 +2,5 @@ node_modules/
 .next/
 out/
 PROGRAMMATIC_SEO_PLAN.md
+.playwright-apify-session/
+.playwright-mcp/

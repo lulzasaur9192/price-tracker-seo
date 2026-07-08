@@ -13,6 +13,11 @@ export const SITE_URL = (
  * canonicalUrl('/') returns the site root (basePath included).
  */
 export function canonicalUrl(path: string = '/'): string {
-  if (!path || path === '/') return SITE_URL;
+  // Homepage: GitHub Pages serves the basePath root as a directory index at
+  // `${SITE_URL}/` (WITH a trailing slash), and the Search Console URL-prefix
+  // property is registered with that slash too — so the homepage canonical must
+  // include it. Sub-pages are served WITHOUT a trailing slash (trailingSlash:false),
+  // so they keep the slash-less form.
+  if (!path || path === '/') return `${SITE_URL}/`;
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
 }
